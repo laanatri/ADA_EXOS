@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Mes recettes de saison 😋</h1>
+    <p>Découvre de super recettes de cuisines au fil des saisons, toutes crées par moi-même, evidemment !</p>
+    <button id="newsletter">Subscribe</button>
+
+    <script>
+        let hasSubscribed = false;
+        const subscribeButton = document.querySelector('#newsletter');
+        const title = document.querySelector("h1");
+
+        // on écoute l'évènement clique sur le bouton subscribe
+        subscribeButton.addEventListener('click', () => {
+            // on inverse la valeur de la variable
+            hasSubscribed = !hasSubscribed;
+            // on change la valeur du texte
+            if (hasSubscribed) {
+                subscribeButton.innerText = 'Unsubscribe';
+            } else {
+                subscribeButton.innerText = 'Subscribe';
+            }
+            title.innerText = "Recette n°" + Math.floor(Math.random() * 100)
+        });
+    </script>
+
+</body>
+</html>
