@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'ComicSansMS3';
+    src: url(./ComicSansMS3.ttf);
+    src: url(./ComicSansMS3.ttf) format('truetype');
+}
+
+body {
+    background-color: pink;
+}
+
+* {
+    color: hotpink;
+    font-family: "ComicSansMS3";
+    text-align: center;
+}
+
+img {
+    border-radius: 50%;
+    border: 5px solid hotpink;
+    width: 300px;
+}
