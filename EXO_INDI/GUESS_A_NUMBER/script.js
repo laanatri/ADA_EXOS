@@ -109,7 +109,7 @@ const gamePlay = () => {
         inputNumberJ2.focus();
     })
 
-    // Ecoute le joueur 1
+    // Ecoute le joueur 2
     sectionJoueur2.addEventListener("submit", (ev) => {
         ev.preventDefault();
 
