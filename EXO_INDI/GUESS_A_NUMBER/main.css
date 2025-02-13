@@ -16,7 +16,21 @@ h1, p, label {
     text-align: center;
 }
 h1 {
+    position: relative;
     color: steelblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 56px;
+    transform-origin: center;
+}
+h1:before {
+    content: "Guess a";
+    position: absolute;
+    bottom: 73%;
+    left: -30%;
+    transform: rotate(-15deg);
+    transform-origin: center;
+    font-size: 36px;
 }
 .game-content {
     position: relative;
@@ -30,7 +44,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-section {
+form {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -53,9 +67,14 @@ label {
 }
 
 .number {
-    border-bottom: 1px solid black;
     width: 25px;
+    border-bottom: 1px solid black;
+    background-color: lightblue;
     margin: 0 10px;
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 .number:focus {
     outline: 0;
@@ -68,7 +87,7 @@ button {
     transition: .3s ease-in-out;
 }
 button:hover {
-    background-color: black;
+    background-color: steelblue;
     color: white;
 }
 .bravo {

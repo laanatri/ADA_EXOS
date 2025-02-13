@@ -12,6 +12,10 @@ const endRange = document.querySelector(".joueur2 .end");
 const tryCount = document.querySelector(".joueur2 .try-count span");
 const reset = document.querySelector(".reset");
 
+let numberToGuess = 0;
+let number = 0;
+let countTry = 1;
+
 const askNumber = () => {
     // const givenNumber = prompt("Joueur 2 : Devine le nombre entre 0 et 50");
     const givenNumber = parseInt(inputNumberJ2.value);
@@ -26,6 +30,11 @@ const askNumberToGuess = () => {
     return givenNumber; 
 };
 
+const resetInput = () => {
+    inputNumberJ1.value = "";
+    inputNumberJ2.value = "";
+}
+
 const didIWin = (givenNumber, choosenNumber) => {
     if (givenNumber === choosenNumber) {
         // alert("Bravo ! Vous avez deviné le nombre");
@@ -33,53 +42,88 @@ const didIWin = (givenNumber, choosenNumber) => {
         sectionJoueur2.style.display = "none";
         sectionYouWin.style.display = "flex";
         sectionYouWin.querySelector("span").innerText = givenNumber;
+
         return true;
+
     } else if (givenNumber < choosenNumber) {
+
         if (startRange.innerText > givenNumber) {
-            alert("out of range")
+            alert("out of range");
+            resetInput();
         } else {
             alert("Plus grand");
             startRange.innerText = givenNumber;
+            resetInput();
         }
+
         return false;
+
     } else {
+
         if (endRange.innerText < givenNumber) {
-            alert("out of range")
+            alert("out of range");
+            resetInput();
         } else {
             alert("Plus petit");
             endRange.innerText = givenNumber;
+            resetInput();
         }
+
         return false;
+
     };
 };
 
-const gamePlay = () => {
-    let numberToGuess = 0;
-    let number = 0;
-    let countTry = 1;
+const resetGame = () => {
+    numberToGuess = 0;
+    number = 0;
+    countTry = 1;
 
-    buttonCheckJ1.addEventListener("click", () => {
+    tryCount.innerText = countTry;
+    startRange.innerText = 0;
+    endRange.innerText = 50;
+
+    resetInput();
+
+    setTimeout(() => {
+        inputNumberJ1.focus();
+    }, 300)
+
+    sectionJoueur1.style.display = "flex";
+    sectionJoueur2.style.display = "none";
+    sectionYouWin.style.display = "none";
+}
+
+const gamePlay = () => {
+    inputNumberJ1.focus();
+
+    // Ecoute le joueur 1
+    sectionJoueur1.addEventListener("submit", (ev) => {
+        ev.preventDefault();
+
         numberToGuess = askNumberToGuess();
+
         sectionJoueur1.style.display = "none";
         sectionJoueur2.style.display = "flex";
+
+        inputNumberJ2.focus();
     })
 
-    buttonCheckJ2.addEventListener("click", () => {
+    // Ecoute le joueur 1
+    sectionJoueur2.addEventListener("submit", (ev) => {
+        ev.preventDefault();
+
         countTry++
         tryCount.innerText = countTry;
+
         number = askNumber();
+
         return didIWin(number, numberToGuess)
     })
 
+    // Reset la game
     reset.addEventListener("click", () => {
-        numberToGuess = 0;
-        number = 0;
-        countTry = 1;
-        inputNumberJ1.value = 0;
-        inputNumberJ2.value = 0;
-        sectionJoueur1.style.display = "flex";
-        sectionJoueur2.style.display = "none";
-        sectionYouWin.style.display = "none";
+        resetGame();
     })
 };
 

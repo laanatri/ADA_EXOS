@@ -8,30 +8,30 @@
 </head>
 <body>
 
-    <h1>Devine le nombre</h1>
+    <h1>Number</h1>
 
     <div class="game-content">
 
-        <section class="joueur1">
-            <label for="number">Joueur 1 : Donne un nombre à faire deviner</label>
+        <form class="joueur1">
+            <label for="number">Joueur 1 : Donne un nombre à faire <br> deviner entre 0 et 50</label>
             <div>
-                <input class="number" type="text" name="number" value="0">
+                <input class="number" type="number" name="number" value="" min="0" max="50">
             </div>
-            <button>Go !</button>
-        </section>
+            <button type="button">Go !</button>
+        </form>
     
-        <section class="joueur2">
-            <label for="number">Joueur 2 : Devine le nombre entre 0 et 50</label>
+        <form class="joueur2">
+            <label for="number">Joueur 2 : Devine le nombre</label>
             <p class="try-count">C'est votre essai n°<span>1</span></p>
             <div>
                 <p class="start">0</p>
                 <p> <</p>
-                <input class="number" type="text" name="number" value="0">
+                <input class="number" type="number" name="number" value="">
                 <p>> </p>
                 <p class="end">50</p>
             </div>
-            <button>Check</button>
-        </section>
+            <button type="button">Check</button>
+        </form>
 
         <section class="you-win">
             <p class="bravo">Bravo !</br> Vous avez deviné le nombre <span>0</span></p>
