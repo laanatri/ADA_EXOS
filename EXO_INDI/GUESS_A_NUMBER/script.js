@@ -1,15 +1,14 @@
-
-const sectionJoueur1 = document.querySelector(".joueur1");
-const sectionJoueur2 = document.querySelector(".joueur2");
+const sectionPlayer1 = document.querySelector(".player1");
+const sectionPlayer2 = document.querySelector(".player2");
 const sectionYouWin = document.querySelector(".you-win");
-const inputNumberJ1 = document.querySelector(".joueur1 .number");
-const buttonCheckJ1 = document.querySelector(".joueur1 button");
-const labelNumberJ2 = document.querySelector(".joueur2 label");
-const inputNumberJ2 = document.querySelector(".joueur2 .number");
-const buttonCheckJ2 = document.querySelector(".joueur2 button");
-const startRange = document.querySelector(".joueur2 .start");
-const endRange = document.querySelector(".joueur2 .end");
-const tryCount = document.querySelector(".joueur2 .try-count span");
+const inputNumberP1 = document.querySelector(".player1 .number");
+const buttonCheckP1 = document.querySelector(".player1 button");
+const labelNumberP2 = document.querySelector(".player2 label");
+const inputNumberP2 = document.querySelector(".player2 .number");
+const buttonCheckP2 = document.querySelector(".player2 button");
+const startRange = document.querySelector(".player2 .start");
+const endRange = document.querySelector(".player2 .end");
+const tryCount = document.querySelector(".player2 .try-count span");
 const reset = document.querySelector(".reset");
 
 let numberToGuess = 0;
@@ -18,7 +17,7 @@ let countTry = 1;
 
 const askNumber = () => {
     // const givenNumber = prompt("Joueur 2 : Devine le nombre entre 0 et 50");
-    const givenNumber = parseInt(inputNumberJ2.value);
+    const givenNumber = parseInt(inputNumberP2.value);
     return givenNumber; 
 };
 
@@ -26,20 +25,20 @@ const askNumber = () => {
 
 const askNumberToGuess = () => {
     // const givenNumber = prompt("Joueur 1 : Donne moi un nombre à faire deviner");
-    const givenNumber = parseInt(inputNumberJ1.value);
+    const givenNumber = parseInt(inputNumberP1.value);
     return givenNumber; 
 };
 
 const resetInput = () => {
-    inputNumberJ1.value = "";
-    inputNumberJ2.value = "";
+    inputNumberP1.value = "";
+    inputNumberP2.value = "";
 }
 
 const didIWin = (givenNumber, choosenNumber) => {
     if (givenNumber === choosenNumber) {
         // alert("Bravo ! Vous avez deviné le nombre");
-        sectionJoueur1.style.display = "none";
-        sectionJoueur2.style.display = "none";
+        sectionPlayer1.style.display = "none";
+        sectionPlayer2.style.display = "none";
         sectionYouWin.style.display = "flex";
         sectionYouWin.querySelector("span").innerText = givenNumber;
 
@@ -86,31 +85,31 @@ const resetGame = () => {
     resetInput();
 
     setTimeout(() => {
-        inputNumberJ1.focus();
+        inputNumberP1.focus();
     }, 300)
 
-    sectionJoueur1.style.display = "flex";
-    sectionJoueur2.style.display = "none";
+    sectionPlayer1.style.display = "flex";
+    sectionPlayer2.style.display = "none";
     sectionYouWin.style.display = "none";
 }
 
 const gamePlay = () => {
-    inputNumberJ1.focus();
+    inputNumberP1.focus();
 
     // Ecoute le joueur 1
-    sectionJoueur1.addEventListener("submit", (ev) => {
+    sectionPlayer1.addEventListener("submit", (ev) => {
         ev.preventDefault();
 
         numberToGuess = askNumberToGuess();
 
-        sectionJoueur1.style.display = "none";
-        sectionJoueur2.style.display = "flex";
+        sectionPlayer1.style.display = "none";
+        sectionPlayer2.style.display = "flex";
 
-        inputNumberJ2.focus();
+        inputNumberP2.focus();
     })
 
     // Ecoute le joueur 2
-    sectionJoueur2.addEventListener("submit", (ev) => {
+    sectionPlayer2.addEventListener("submit", (ev) => {
         ev.preventDefault();
 
         countTry++

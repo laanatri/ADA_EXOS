@@ -51,7 +51,7 @@ form {
     align-items: center;
     flex-direction: column;
 }
-.joueur2, .you-win {
+.player2, .you-win {
     display: none;
 }
 label {
@@ -59,7 +59,7 @@ label {
     color: rgb(4, 24, 84);
 }
 
-.joueur1>div:nth-child(2), .joueur2>div:nth-child(3) {
+.player1>div:nth-child(2), .player2>div:nth-child(3) {
     display: flex;
     justify-content: center;
     align-items: center;
