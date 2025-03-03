@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu des allumettes</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <h1>Le jeu des allumettes</h1>
+    <img src="./match.png" alt="">
+
+    <div class="main-content">
+
+        <div class="game-start">
+            <form id="players-form" action="">
+                <label for="nombre">Nombre de joueurs</label>
+                <input type="number" name="nombre" min="1" value="1">
+                <button type="submit">Start</button>
+            </form>
+        </div>
+        <div class="game-content">
+            <div class="form-content">
+                <h2>Player 1</h2>
+                <form id="game-form" action="">
+                    <label for="">Combien d'alllumettes veux tu prendre ?</label>
+                    <input type="number" min="1" max="6" value="1">
+                    <button type="submit">Prendre</button>
+                </form>
+            </div>
+            <div class="allumettes-content">
+                <div class="allumette"></div>
+            </div>
+        </div>
+        <div class="winner-content">
+            <p>Bravo</p>
+            <p class="winner-name">Player 1</p>
+            <p>tu as gagné la partie</p>
+            <button id="reset">Rejouer</button>
+        </div>
+        
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
