@@ -9,13 +9,19 @@
 <body>
     <h1>Le jeu des allumettes</h1>
     <img src="./match.png" alt="">
-
     <div class="main-content">
-
         <div class="game-start">
             <form id="players-form" action="">
-                <label for="nombre">Nombre de joueurs</label>
-                <input type="number" name="nombre" min="1" value="1">
+                <div class="input-number">
+                    <div class="number-select players-select">
+                        <p>-</p>
+                    </div>
+                    <input type="number" name="nombre" min="1" value="1">
+                    <div class="number-select players-select">
+                        <p>+</p>
+                    </div>
+                </div>
+                <label for="nombre">Players</label>
                 <button type="submit">Start</button>
             </form>
         </div>
@@ -24,7 +30,16 @@
                 <h2>Player 1</h2>
                 <form id="game-form" action="">
                     <label for="">Combien d'alllumettes veux tu prendre ?</label>
-                    <input type="number" min="1" max="6" value="1">
+                    <div class="input-number">
+                        <div class="number-select matches-select">
+                            <p>-</p>
+                        </div>
+                        <input type="number" min="1" max="6" value="1">
+                        <div class="number-select matches-select">
+                            <p>+</p>
+                        </div>
+                    </div>
+                    <p>allumettes</p>
                     <button type="submit">Prendre</button>
                 </form>
             </div>

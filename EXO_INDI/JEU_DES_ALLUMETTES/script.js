@@ -1,7 +1,9 @@
 const playersForm = document.getElementById("players-form");
+const playersSelect = document.querySelectorAll(".players-select");
 const inputNumberOfPlayers = document.querySelector("#players-form input");
 let numberOfPlayer = 1;
 const gameForm = document.getElementById("game-form");
+const matchesSelect = document.querySelectorAll(".matches-select");
 const inputPlayerChoice = document.querySelector("#game-form input");
 const matchContent = document.querySelector(".allumettes-content");
 let matchCount = 50;
@@ -30,7 +32,7 @@ const displayWinner = () => {
     console.log("tu as gagné : " + curentPlayer);
     document.querySelector(".winner-name").innerText = "Player " + curentPlayer;
     document.querySelector(".game-content").style.display = "none";
-    document.querySelector(".winner-content").style.display = "block";
+    document.querySelector(".winner-content").style.display = "flex";
 }
 
 const nextPlayer = () => {
@@ -54,7 +56,7 @@ const startGame = () => {
 const resetGame = () => {
     matchCount = 50;
     curentPlayer = 1;
-    document.querySelector(".game-start").style.display = "block";
+    document.querySelector(".game-start").style.display = "flex";
     document.querySelector(".winner-content").style.display = "none";
     document.querySelector("h2").innerText = "Player " + curentPlayer;
     inputNumberOfPlayers.value = 1;
@@ -62,6 +64,20 @@ const resetGame = () => {
 }
 
 // choix du nombre de joueur
+playersSelect.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+        if (i === 0) {
+            inputNumberOfPlayers.value--;
+            if (inputNumberOfPlayers.value < 1) {
+                inputNumberOfPlayers.value = 1;
+            }
+        } else {
+            inputNumberOfPlayers.value++;
+        }
+    })
+})
+
+// lancer la partie
 playersForm.addEventListener("submit", () => {
     event.preventDefault();
     startGame();
@@ -69,6 +85,23 @@ playersForm.addEventListener("submit", () => {
 })
 
 // choix du nombre d'allumettes à prendre
+matchesSelect.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+        if (i === 0) {
+            inputPlayerChoice.value--;
+            if (inputPlayerChoice.value < 1) {
+                inputPlayerChoice.value = 1;
+            }
+        } else {
+            inputPlayerChoice.value++;
+            if (inputPlayerChoice.value > 6) {
+                inputPlayerChoice.value = 6;
+            }
+        }
+    })
+})
+
+// valider le choix du nombre d'allumettes prises
 gameForm.addEventListener("submit", () => {
     event.preventDefault();
     handleGamePlay(inputPlayerChoice.value);
@@ -78,10 +111,3 @@ gameForm.addEventListener("submit", () => {
 resetButton.addEventListener("click", () => {
     resetGame();
 })
-
-// choix du nombre de joueur
-// lancer la partie
-// chaque joueur peux prendre 1 à 6 Allu
-// à chaque tour de joueur il faut checker si c'est gagné
-// tant que c'est pas gagné, on iter sur les joueurs 
-// si c'est gagné, on stop le partie puis on affiche le gagnant
