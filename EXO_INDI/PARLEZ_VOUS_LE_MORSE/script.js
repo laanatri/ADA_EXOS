@@ -44,19 +44,33 @@ const getLatinCharacterList = (sentence) => {
     return sentence.split("");
 }
 
-const encode = (text) => {
-    let encodedString = "";
-    getLatinCharacterList(text).forEach(letter => {
-        if (letter === " ") {
-            encodedString += "/ ";
-        } else if (translateLatinCharacter(letter) === undefined) {
-
-        } else {
-            encodedString += translateLatinCharacter(letter) + " ";
+const checkInputEncode = (text) => {
+    let continuer = true;
+    getLatinCharacterList(text).some(letter => {
+        if (translateLatinCharacter(letter) === undefined && letter !== " ") {
+            alert("on ne prend pas les caract");
+            continuer = false;
+            return true;
         }
-    });
-    encodedString = encodedString.slice(0, encodedString.length - 1);
-    trad.innerText = encodedString;
+    })
+    return continuer;
+}
+
+const encode = (text) => {
+    if (checkInputEncode(text)) {
+        let encodedString = "";
+        getLatinCharacterList(text).forEach(letter => {
+            if (letter === " ") {
+                encodedString += "/ ";
+            } else if (translateLatinCharacter(letter) === undefined) {
+                // error
+            } else {
+                encodedString += translateLatinCharacter(letter) + " ";
+            }
+        });
+        encodedString = encodedString.slice(0, encodedString.length - 1);
+        trad.innerText = encodedString;
+    }
 };
 
 // encode("Hello, world");
@@ -98,16 +112,30 @@ const getMorseCharacterList = (morse) => {
     return morse.split(" ");
 }
 
+const checkInputDecode = (text) => {
+    let continuer = true;
+    getMorseCharacterList(text).some(letter => {
+        if (translateMorseCharacter(letter) === undefined && letter !== "/") {
+            alert("ce n'est pas un morse valide");
+            continuer = false;
+            return true;
+        }
+    })
+    return continuer;
+}
+
 const decode = (morseText) => {
-    let newString = "";
-    getMorseCharacterList(morseText).forEach(letter => {
-        if (letter === "/") {
-            newString += " ";
-        } else {
-            newString += translateMorseCharacter(letter);
-        }  
-    });
-    trad.innerText = newString;
+    if (checkInputDecode(morseText)) {
+        let newString = "";
+        getMorseCharacterList(morseText).forEach(letter => {
+            if (letter === "/") {
+                newString += " ";
+            } else {
+                newString += translateMorseCharacter(letter);
+            }  
+        });
+        trad.innerText = newString;
+    }
 };
 
 // decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -..");
@@ -123,9 +151,12 @@ const checkOrder = () => {
     }
 }
 
-const displayTrad = () => {
-    // Création content pour une trad
-
+const removeTrad = (target) => {
+    datasToStore = JSON.parse(localStorage.getItem("datas"));
+    let dataToRemove = datasToStore.find((x => x.txt === target.parentNode.querySelector('.fr-trad').innerText));
+    datasToStore.splice(datasToStore.indexOf(dataToRemove), 1);
+    localStorage.setItem("datas", JSON.stringify(datasToStore));
+    target.parentNode.remove();
 }
 
 let datasToStore = [];
@@ -133,17 +164,29 @@ let datasToStore = [];
 const saveInLocalStorage = (txt, morse) => {
     datasToStore.push({"txt": txt, "morse": morse});
     localStorage.setItem("datas", JSON.stringify(datasToStore));
-    console.log(datasToStore);
 }
 
 const getFromLocalStorage = () => {
-    datasToStore = JSON.parse(localStorage.getItem("datas")) ;
-    if (datasToStore) {
+    if (localStorage.getItem("datas")) {
+        datasToStore = JSON.parse(localStorage.getItem("datas"));
         datasToStore.forEach(data => {
             // Création content pour une trad
             const traduction = document.createElement("div");
             traduction.classList.add("traductions");
             tradSave.appendChild(traduction);
+            // Button remove
+            const btnRemove = document.createElement("div");
+            btnRemove.classList.add("remove-trad");
+            traduction.appendChild(btnRemove);
+            const imgTrash = document.createElement("img");
+            imgTrash.src = "./trash.svg";
+            btnRemove.appendChild(imgTrash);
+
+            // add event trash
+            btnRemove.addEventListener("click", () => {
+                removeTrad(event.currentTarget);
+            })
+
             // Trad en FR
             const tradFR = document.createElement("div");
             tradFR.classList.add("fr-trad");
@@ -172,7 +215,7 @@ const getFromLocalStorage = () => {
     }
 }
 
-// getFromLocalStorage();
+getFromLocalStorage();
 
 choicesButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -209,9 +252,17 @@ save.addEventListener("click", () => {
         tradSave.appendChild(traduction);
         // Button remove
         const btnRemove = document.createElement("div");
-        btnRemove.innerText = "X";
         btnRemove.classList.add("remove-trad");
         traduction.appendChild(btnRemove);
+        const imgTrash = document.createElement("img");
+        imgTrash.src = "./trash.svg";
+        btnRemove.appendChild(imgTrash);
+
+        // add event trash
+        btnRemove.addEventListener("click", () => {
+            removeTrad(event.currentTarget);
+        })
+
         // Trad en FR
         const tradFR = document.createElement("div");
         tradFR.classList.add("fr-trad");
@@ -241,3 +292,4 @@ save.addEventListener("click", () => {
         saveInLocalStorage(tradFRP.innerText, tradmorseP.innerText);
     };
 });
+

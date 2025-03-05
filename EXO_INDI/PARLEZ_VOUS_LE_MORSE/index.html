@@ -8,28 +8,24 @@
     <script type="module" src="./script.js" defer></script>
 </head>
 <body>
-
-
     <h1>Parlez-vous le morse ?</h1>
-
     <div class="main-content">
         <div class="btns-content">
             <button class="selected">Encoder</button>
             <button>Décoder</button>
         </div>
-
         <form class="form" action="">
             <label for="sentence">Insérer votre phrase ici :</label>
             <input type="text" name="sentence">
             <button type="submit">Traduire en morse</button>
         </form>
-
+        <div class="img-content">
+            <img src="./arrow.svg" alt="">
+        </div>
         <div class="trad-content">
             <p></p>
         </div>
-
         <button id="save">Save</button>
-
         <div class="trad-saved">
             <div class="titles">
                 <p>Texte</p>
@@ -37,6 +33,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
