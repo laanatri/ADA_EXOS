@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API METEO</title>
+    <script type="module" src="./script.js" defer></script>
+</head>
+<body>
+
+    <h1>POKEMON</h1>
+
+    <select name="gens" id="gens-list">
+        <option value="">Choisi une génération</option>
+    </select>
+
+    <div>
+        <input type="checkbox" data-value="is_legendary" id="is-legendary" name="legendary"/>
+        <label for="legendary">legendary</label>
+
+        <input type="checkbox" data-value="is_mythical" id="is-mythical" name="mythical"/>
+        <label for="mythical">mythical</label>
+    </div>
+
+    <div class="pokemon-content">
+        <!-- <div class="pokemon-card">
+        </div> -->
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            padding: 30px 3%
+        }
+
+        .pokemon-content {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 15px;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 30px 3%;
+            @media screen and (min-width: 768px) {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            @media screen and (min-width: 1200px) {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }            
+        }
+
+        .pokemon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pokemon-card p {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 50%;
+        }
+    </style>
+
+</body>
+</html>
