@@ -1,0 +1,147 @@
+h1 {
+    color: #88e23b;
+    color: #ebe480;
+    color: #043c6e;
+    color: #60a85f;
+    color: #a6cccc;
+}
+
+#accordion {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    @media screen and (min-width: 768px) {
+        padding: 0;
+    }
+}
+
+h3.ui-accordion-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ebe480;
+    transition: .3s ease-in-out;
+    border: 1px solid transparent;
+    border-top: 1px solid #ebe480;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: capitalize;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin-top: 0px !important;
+    padding: 10px 0 10px 20px;
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        line-height: 35px;
+    }
+}
+
+h3.ui-accordion-header:first-child {
+    border: 1px solid transparent;
+}
+
+.accordion-arrow {
+    display: inline-block;
+    transform-style: preserve-3d;
+    transition: (transform .5s 0s);
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    width: 23px !important;
+    height: 14px;
+    margin: 0;
+    @media screen and (min-width: 768px) {
+        width: 20px !important;
+        height: 10px;
+    }
+}
+
+h3.ui-accordion-header.ui-accordion-header-active {
+    /* color: white !important; */
+    padding-bottom: 10px;
+    @media screen and (min-width: 768px) {
+        padding-bottom: 20px;
+    }
+}
+
+.tpl-accordion-arrow {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.ui-accordion-content {
+    background-color: transparent;
+    border-color: transparent !important;
+    padding: 0 0 30px 20px;
+    @media screen and (min-width: 768px) {
+        padding: 0 0 40px 0;
+    }
+}
+
+.ui-accordion-content>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ui-accordion-content label {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    margin-left: 0;
+    color: #ebe480;
+    text-transform: capitalize;
+    @media screen and (min-width: 768px) {
+        width: 90%;
+    }
+}
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: transparent;
+    /* Not removed via appearance */
+    margin: 0 5px 0 0 ;
+  
+    font: inherit;
+    color: #043c6e;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid #043c6e;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+  
+    display: grid;
+    place-content: center;
+}
+  
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #043c6e;
+    /* Windows High Contrast Mode */
+    background-color: transparent;
+}
+  
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+  
+input[type="checkbox"]:disabled {
+    --form-control-color: #;
+    color: #043c6e;
+    cursor: not-allowed;
+}

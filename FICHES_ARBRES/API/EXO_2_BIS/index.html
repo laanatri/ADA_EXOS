@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&M</title>
+
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./pagination.css">
+    <link rel="stylesheet" href="./accordion.css">
+
+    <!-- jquery-3.7.1 -->
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"
+        defer
+    ></script>
+
+    <!-- JqueryUI -->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" defer></script>
+
+    <script type="module" src="./pagination.js" defer></script>
+
+    <script type="module" src="./script.js" defer></script>
+
+</head>
+<body>
+
+    <div class="navbar-container">
+        <h1><img src="./logo.png" alt="Rick and Morty"></h1>
+
+        <div class="navbar">
+            <div class="link actif">
+                <p>persos</p>
+            </div>
+            <div class="link">
+                <p>lieux</p>
+            </div>
+            <div class="link">
+                <p>épisodes</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="filterbar-container">
+
+        <div class="filterbar">
+            <p>filtres</p>
+        </div>
+
+        <div class="filter-content">
+
+            <div class="curent-filters-content"></div>
+
+            <form action="">
+                <div id="accordion">
+
+                    <h3>Existance<img src="./arrow_white.png" alt="" class="accordion-arrow"></h3>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="alive" value="alive">
+                            <label for="alive">Vivant</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="dead" value="dead">
+                            <label for="dead">Mort</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="unknown" value="unknown">
+                            <label for="unknown">Indéterminé</label>
+                        </div>
+                    </div>
+
+                    <h3>éspèce<img src="./arrow_white.png" alt="" class="accordion-arrow"></h3>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="human" value="human">
+                            <label for="human">Humain</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="humanoid" value="humanoid">
+                            <label for="humanoid">Humanoïd</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="alien" value="alien">
+                            <label for="alien">Alien</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="Poopybutthole" value="Poopybutthole">
+                            <label for="Poopybutthole">Poopybutthole</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="Mythological" value="Mythological">
+                            <label for="Mythological">créature mythologique</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="animal" value="animal">
+                            <label for="animal">animal</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="robot" value="robot">
+                            <label for="robot">robot</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="Cronenberg" value="Cronenberg">
+                            <label for="Cronenberg">Cronenberg</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="Disease" value="Disease">
+                            <label for="Disease">Maladie</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="unknown" value="unknown">
+                            <label for="unknown">éspèce indéterminée</label>
+                        </div>
+                    </div>
+
+                    <h3>Genre<img src="./arrow_white.png" alt="" class="accordion-arrow"></h3>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="Male" value="Male">
+                            <label for="Male">Homme</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="Female" value="Female">
+                            <label for="Female">Femme</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="unknown" value="unknown">
+                            <label for="unknown">sans genre</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="genderless" value="genderless">
+                            <label for="genderless">genre indéterminé</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button>VOIR</button>
+
+                <div class="close">
+                    <p>X</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="characters-container">
+
+        <div class="character-card">
+            <div class="character-card-front">
+                <div class="img-content">
+                    <img src="" alt="">
+                </div>
+                <div class="txt-content">
+                    <p class="name">Morty</p>
+                </div>
+            </div>
+            <div class="character-card-back">
+                <p>DATAS</p>
+                <p class="genre"></p>
+                <p class="location"></p>
+                <p class="species"></p>
+                <p class="status"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="data-container"></div>
+    <div id="pagination-container"></div>
+
+</body>
+</html>

@@ -1,16 +1,11 @@
 const breweriesContent = document.querySelector(".breweries-content");
 
-const getCities = async (breweries) => {
-    let cities = [];
-    const response = await fetch("https://api.openbrewerydb.org/v1/breweries");
-    let datas = await response.json();
-    console.log(datas)
-    for (const brewery of datas) {
-        if (!cities.includes(brewery.city)) {
-            cities.push(brewery.city)
-        }
+const getNbrItems = async (nbrB) => {
+    let array = [];
+    for (let i = 1; i <= nbrB; i++) {
+        array.push(i);
     }
-    return cities.sort();
+    return array;
 }
 
 const breweriesMetaInit = async (city = "") => {
@@ -19,10 +14,26 @@ const breweriesMetaInit = async (city = "") => {
     return datasInit;
 }
 
+const getCities = async (breweries) => {
+    let cities = [];
+    const response = await fetch("https://api.openbrewerydb.org/v1/breweries");
+    let datas = await response.json();
+    console.log(datas)
+
+    console.log(await breweriesMetaInit().total)
+    console.log(await getNbrItems(breweriesMetaInit().total))
+
+    for (const brewery of datas) {
+        if (!cities.includes(brewery.city)) {
+            cities.push(brewery.city)
+        }
+    }
+    return cities.sort();
+}
+
 const getBreweries = async (city = "") => {
     const metas = await breweriesMetaInit(city);
     console.log(metas)
-
     city = city.split(" ").join("_").toLowerCase();
     let url = `https://api.openbrewerydb.org/v1/breweries?by_city=${city}&page=1&per_page=10`;
     const response = await fetch(url);
@@ -33,9 +44,9 @@ const getBreweries = async (city = "") => {
     // return datas = datas.filter((brewerie) => brewerie.city === city)
 }
 
-const dislayBreweries = async (value = "") => {
+const dislayBreweries = async (valueCity = "") => {
     breweriesContent.innerHTML = "";
-    const breweriesList = await getBreweries(value)
+    const breweriesList = await getBreweries(valueCity)
     for await (const brewery of breweriesList) {
         breweriesContent.innerHTML += `<div class="brewery-card">
             <p class="name">${brewery.name}</p>
@@ -59,15 +70,18 @@ $('#tags').change(function () {
 }).change();
 
 // pagination
-let pages = [1, 2, 3];
 
-$('#pagination-container').pagination({
-    dataSource: pages,
-    pageSize: 5,
-    showSizeChanger: true,
-    callback: function(data, pagination) {
-        // template method of yourself
-        var html = template(data);
-        dataContainer.html(html);
-    }
-})
+
+
+
+// $('#pagination-container').pagination({
+//     dataSource: getNbrItems(breweriesMetaInit().total),
+//     pageSize: 5,
+//     showSizeChanger: true,
+//     callback: function(data, pagination) {
+//         // template method of yourself
+//         var html = template(data);
+//         dataContainer.html(html);
+//     }
+// })
+
