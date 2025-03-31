@@ -292,4 +292,3 @@ save.addEventListener("click", () => {
         saveInLocalStorage(tradFRP.innerText, tradmorseP.innerText);
     };
 });
-
