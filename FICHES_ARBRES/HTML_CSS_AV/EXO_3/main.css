@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,600;1,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+  color: hsl(0, 6%, 24%);
+}
+
+body {
+  position: relative;
+  width: 100%;
+}
+
+.calque {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.newsletter-form-container {
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container {
+    width: 57.5vw;
+  }
+}
+.newsletter-form-container .newsletter-form .logo-content {
+  padding: 32px 0 28px 9%;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .logo-content {
+    padding: 66px 0 72px 20%;
+  }
+}
+.newsletter-form-container .newsletter-form .logo-content img {
+  width: 26vw;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .logo-content img {
+    width: 155px;
+  }
+}
+.newsletter-form-container .newsletter-form .img-content {
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .img-content {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 42.5vw;
+    height: 100%;
+  }
+}
+.newsletter-form-container .newsletter-form .img-content img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+}
+.newsletter-form-container .newsletter-form .txt-content {
+  padding: 63px 5% 92px;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content {
+    padding: 66px 5% 163px 10%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .newsletter-form-container .newsletter-form .txt-content {
+    padding: 66px 5% 163px 20%;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 11px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content h1 {
+    font-size: 4rem;
+    letter-spacing: 17px;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content h1 span {
+  color: hsl(0, 36%, 70%);
+  font-weight: 300;
+}
+.newsletter-form-container .newsletter-form .txt-content > p {
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.5px;
+  color: hsl(0, 36%, 70%);
+  max-width: 92%;
+  margin: 0 auto 28px;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content > p {
+    font-size: 0.95rem;
+    line-height: 1.7rem;
+    text-align: left;
+    max-width: 455px;
+    margin: 0 0 40px 0;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border: 1px solid hsla(0, 36%, 70%, 0.7);
+  border-radius: 50px;
+  width: 92%;
+  margin: 0 auto;
+  transition: 0.3s ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form {
+    width: 444px;
+    margin: 0;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form input {
+  height: 45px;
+  outline: none;
+  border: none;
+  flex-grow: 1;
+  padding-left: 23px;
+  color: hsl(0, 36%, 70%);
+  background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form input {
+    height: 54px;
+    font-size: 1rem;
+    padding-left: 30px;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form input::-moz-placeholder {
+  opacity: 0.5;
+  color: hsl(0, 36%, 70%);
+}
+.newsletter-form-container .newsletter-form .txt-content form input::placeholder {
+  opacity: 0.5;
+  color: hsl(0, 36%, 70%);
+}
+.newsletter-form-container .newsletter-form .txt-content form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0 26px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0px 6px 22px 2px hsla(0, 36%, 70%, 0.7);
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form button {
+    padding: 0 45px;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form button:hover {
+  background: linear-gradient(135deg, hsl(0, 66%, 94%), hsl(0, 49%, 85%));
+  transform: scale(1.1);
+}
+.newsletter-form-container .newsletter-form .txt-content form .error-picto {
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  transform: translate(-50%, -50%);
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form .error-picto {
+    right: 110px;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form .error-picto img {
+  width: 20px;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form .error-picto img {
+    width: 23px;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form .error-email {
+  position: absolute;
+  top: 125%;
+  left: 23px;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form .error-email {
+    left: 30px;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form .error-email p {
+  font-size: 0.8rem;
+  color: hsl(0, 93%, 68%);
+}
+@media screen and (min-width: 768px) {
+  .newsletter-form-container .newsletter-form .txt-content form .error-email p {
+    font-size: 1rem;
+  }
+}
+.newsletter-form-container .newsletter-form .txt-content form.error {
+  border: 1px solid hsl(0, 93%, 68%);
+}
+.newsletter-form-container .newsletter-form .txt-content form.error .error-email,
+.newsletter-form-container .newsletter-form .txt-content form.error .error-picto {
+  opacity: 1;
+  visibility: visible;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  background-color: hsl(0, 36%, 70%);
+  padding: 20px 0;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}/*# sourceMappingURL=main.css.map */
