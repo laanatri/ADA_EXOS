@@ -19,15 +19,13 @@ function genererRapportUtilisateur(nom, age, ville, profession, estAbonne) {
     //   rapport += "Catégorie : Senior\\n";
     // }
 
-    let rapport = `Rapport utilisateur :
+    return `Rapport utilisateur :
     Nom : ${nom}
     Age : ${age} ans
     Ville : ${ville}
     Profession : ${profession}
     ${estAbonne ? "Statut : Abonné" : "Statut : Non abonné"}
     ${age < 18 ? "Catégorie : Jeune" : age >= 18 && age < 60 ? "Catégorie : Adulte" : "Catégorie : Senior"}`;
-
-    return rapport;
 }
 
 console.log(genererRapportUtilisateur("adé", "24", "st lubin", "dev", true));
