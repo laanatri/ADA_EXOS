@@ -1,15 +1,24 @@
 function somme(arr) {
-	let n = 0;
+	let sum = 0;
 	// for (let i = 0; i < arr.length; i++) {
 	// 	n += arr[i];
 	// }
-	// return n;
+	// return sum;
+
+
     if (arr && arr.constructor === Array) {
-        arr.forEach(el => typeof(el) === "number" ? n += el : n += 0);
-        return n;
+        arr.forEach(el => !isNaN(el) ? sum += el : sum += 0);
+        return sum;
     } else {
         return "Erreur: Vous devez passer un tableau de nombres";
     }
+
+    
+    // if (!Array.isArray(arr)) {return undefined}
+    // return arr.reduce((acc, v) => {
+    //     acc += isNaN(v) ? 0 : v;
+    //     return acc;
+    // }, 0);
 }
 
 console.log(somme([1, 2, 3, 4])); // Devrait retourner 10
